@@ -5,7 +5,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html, 
+body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -24,7 +25,7 @@ html, body {
     padding: 20px;
 }
 
-/* ===== PANEL IZQUIERDO ===== */
+/* ===== PANEL IZQUIERDO - BRANDING ===== */
 .login-left-panel {
     background-color: #005be0;
     display: flex;
@@ -39,7 +40,7 @@ html, body {
     font-weight: 700;
 }
 
-/* ===== PANEL DERECHO ===== */
+/* ===== PANEL DERECHO - FORMULARIO ===== */
 .login-right-panel {
     background-color: white;
     display: flex;
@@ -47,12 +48,12 @@ html, body {
     align-items: center;
 }
 
-/* ===== FORMULARIO DE LOGIN ===== */
 .login-form {
     width: 100%;
     max-width: 400px;
 }
 
+/* ===== TÍTULO Y SUBTÍTULO DE BIENVENIDA ===== */
 .welcome-title {
     font-family: 'Nunito', sans-serif;
     font-weight: 300;
@@ -80,7 +81,7 @@ html, body {
     letter-spacing: 0.3px;
 }
 
-/* ===== CAMPOS DE ENTRADA ===== */
+/* ===== ESTRUCTURA DE FORMULARIO ===== */
 .form-group {
     margin-bottom: 20px;
 }
@@ -99,6 +100,7 @@ html, body {
     margin-bottom: 10px;
 }
 
+/* ===== ESTILOS GENERALES DE INPUTS ===== */
 .form-input {
     width: 100%;
     padding: 12px 40px;
@@ -115,6 +117,7 @@ html, body {
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
+/* ===== ICONOS DE CAMPOS ===== */
 .input-wrapper.email-field::before {
     content: '';
     position: absolute;
@@ -127,6 +130,7 @@ html, body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 3;
 }
 
 .input-wrapper.password-field::before {
@@ -141,21 +145,41 @@ html, body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 5;
 }
 
-/* ===== ICONO DE OJO PARA MOSTRAR/OCULTAR CONTRASEÑA (CSS-ONLY) ===== */
+/* ===== FUNCIONALIDAD MOSTRAR/OCULTAR CONTRASEÑA ===== */
 
-/* Ocultar el checkbox */
+/* Checkbox oculto que controla el estado */
 .password-checkbox {
     display: none;
 }
 
-/* Input de contraseña visible (inicialmente oculto) */
+/* Input de texto para mostrar contraseña (inicialmente oculto) */
 .password-visible-input {
     display: none !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    background-color: white;
+    z-index: 2;
+    transition: border-color 0.3s ease;
 }
 
-/* Label que actúa como botón del ojo */
+.password-visible-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Botón del ojo para toggle */
 .password-toggle-label {
     position: absolute;
     right: 12px;
@@ -167,27 +191,27 @@ html, body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    transition: opacity 0.3s ease;
-    /* Ojo cerrado por defecto */
     background-image: url('https://www.svgrepo.com/show/380007/eye-password-hide.svg');
+    transition: opacity 0.3s ease;
+    z-index: 10;
 }
 
 .password-toggle-label:hover {
     opacity: 0.7;
 }
 
-/* Cuando el checkbox está checked (ojo abierto) */
-.password-checkbox:checked + .password-toggle-label {
-    background-image: url('https://cdn1.iconfinder.com/data/icons/general-icons2/128/eye-open2-512.png');
-}
-
-/* Mostrar/ocultar inputs basado en el estado del checkbox */
-.password-checkbox:checked ~ #password {
-    display: none !important;
-}
-
-.password-checkbox:checked ~ .password-visible-input {
+/* Estados del toggle de contraseña */
+.password-checkbox:checked + input + .password-visible-input {
     display: block !important;
+}
+
+.password-checkbox:checked + input {
+    opacity: 0;
+    z-index: 1;
+}
+
+.password-checkbox:checked ~ .password-toggle-label {
+    background-image: url('https://cdn1.iconfinder.com/data/icons/general-icons2/128/eye-open2-512.png');
 }
 
 /* ===== ENLACES Y BOTONES ===== */
@@ -198,8 +222,8 @@ html, body {
     color: #007bff;
     font-family: 'Nunito', sans-serif;
     font-size: 0.9rem;
-    cursor: pointer;
     text-decoration: none;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -211,15 +235,15 @@ html, body {
 .login-button {
     width: 100%;
     padding: 12px;
+    border: none;
     border-radius: 8px;
     background-color: #005be0;
-    border: none;
     color: white;
     font-family: 'Nunito', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .login-button:hover {

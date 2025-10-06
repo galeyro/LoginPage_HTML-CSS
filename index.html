@@ -2,36 +2,41 @@
 <html lang="en-US">
     <head>
         <meta charset="utf-8"/>
-        <meta name="description" content="Responsive Login Page built with HTML, CSS, and Media Queries"/>
+        <meta name="description" content="AdminExpress - Responsive Login Page built with HTML, CSS, and Media Queries"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="author" content="AdminExpress"/>
         <link rel="stylesheet" href="css/login.css"/>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
         <title>AdminExpress - Login</title>
     </head>
+    
     <body>
         <main class="login-container">
-            <!-- Panel izquierdo con branding -->
+            <!-- ===== PANEL IZQUIERDO - BRANDING ===== -->
             <section class="login-left-panel">
                 <h1 class="brand-title">AdminExpress</h1>
             </section>
 
-            <!-- Panel derecho con formulario -->
+            <!-- ===== PANEL DERECHO - FORMULARIO ===== -->
             <section class="login-right-panel">
-                <form class="login-form" role="form" aria-label="Login form">
-                    <!-- Título de bienvenida -->
-                    <h2 class="welcome-title">
-                        Let's <span class="highlight">Sign In</span>
-                        <img class="welcome-emoji" 
-                             src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f447.png" 
-                             alt="pointing down emoji">
-                    </h2>
+                <form class="login-form" role="form" aria-label="Formulario de inicio de sesión">
                     
-                    <p class="welcome-subtitle">
-                        Hey. Enter your details to get sign in<br>
-                        to your account.
-                    </p>
+                    <!-- Título de bienvenida -->
+                    <header class="welcome-section">
+                        <h2 class="welcome-title">
+                            Let's <span class="highlight">Sign In</span>
+                            <img class="welcome-emoji" 
+                                 src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f447.png" 
+                                 alt="Emoji apuntando hacia abajo">
+                        </h2>
+                        
+                        <p class="welcome-subtitle">
+                            Hey. Enter your details to get sign in<br>
+                            to your account.
+                        </p>
+                    </header>
 
-                    <!-- Campo de email -->
+                    <!-- ===== CAMPO EMAIL ===== -->
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-wrapper email-field">
@@ -41,47 +46,108 @@
                                    class="form-input" 
                                    placeholder="Enter Email" 
                                    required 
-                                   autocomplete="email"/>
+                                   autocomplete="email"
+                                   aria-describedby="email-help"/>
                         </div>
                     </div>
 
-                    <!-- Campo de contraseña -->
+                    <!-- ===== CAMPO CONTRASEÑA CON TOGGLE ===== -->
                     <div class="form-group">
                         <label for="password" class="form-label">Password</label>
                         <div class="input-wrapper password-field">
+                            <!-- Checkbox oculto para controlar el toggle -->
+                            <input type="checkbox" 
+                                   id="toggle-password" 
+                                   class="password-checkbox"
+                                   aria-label="Mostrar u ocultar contraseña"
+                                   title="Click para mostrar/ocultar contraseña">
+                            
+                            <!-- Input de contraseña (oculto) -->
                             <input type="password" 
                                    id="password" 
                                    name="password" 
                                    class="form-input" 
                                    placeholder="Enter Password" 
                                    required 
-                                   autocomplete="current-password"/>
+                                   autocomplete="current-password"
+                                   aria-describedby="password-help"/>
+                            
+                            <!-- Input de texto visible (para mostrar contraseña) -->
                             <input type="text" 
                                    id="password-visible" 
                                    name="password-visible" 
                                    class="form-input password-visible-input" 
                                    placeholder="Enter Password" 
-                                   autocomplete="current-password"/>
-                            <input type="checkbox" 
-                                   id="toggle-password" 
-                                   class="password-checkbox"
-                                   aria-label="Mostrar contraseña"
-                                   title="Mostrar/Ocultar contraseña">
+                                   autocomplete="current-password"
+                                   tabindex="-1"/>
+                            
+                            <!-- Botón del ojo para toggle -->
                             <label for="toggle-password" 
                                    class="password-toggle-label"
-                                   title="Mostrar/Ocultar contraseña"></label>
+                                   title="Mostrar/Ocultar contraseña"
+                                   aria-label="Botón para mostrar u ocultar contraseña"></label>
                         </div>
                     </div>
 
-                    <!-- Enlace de contraseña olvidada -->
-                    <a href="#" class="forgot-password-link">Forgot password?</a>
+                    <!-- ===== ENLACE CONTRASEÑA OLVIDADA ===== -->
+                    <div class="form-actions">
+                        <a href="#forgot-password" 
+                           class="forgot-password-link"
+                           aria-label="Recuperar contraseña">
+                            Forgot password?
+                        </a>
+                    </div>
 
-                    <!-- Botón de envío -->
-                    <button type="submit" class="login-button">
+                    <!-- ===== BOTÓN DE ENVÍO ===== -->
+                    <button type="submit" 
+                            class="login-button"
+                            aria-label="Iniciar sesión">
                         Sign In
                     </button>
+                    
                 </form>
             </section>
         </main>
+
+        <!-- ===== SCRIPT PARA SINCRONIZAR INPUTS ===== -->
+        <script>
+            (function() {
+                'use strict';
+                
+                // Obtener referencias a los inputs
+                const passwordInput = document.getElementById('password');
+                const passwordVisibleInput = document.getElementById('password-visible');
+                
+                // Verificar que los elementos existen
+                if (!passwordInput || !passwordVisibleInput) {
+                    console.error('No se encontraron los inputs de contraseña');
+                    return;
+                }
+                
+                // Sincronizar cuando se escribe en el input de contraseña oculto
+                passwordInput.addEventListener('input', function() {
+                    passwordVisibleInput.value = this.value;
+                });
+                
+                // Sincronizar cuando se escribe en el input de contraseña visible
+                passwordVisibleInput.addEventListener('input', function() {
+                    passwordInput.value = this.value;
+                });
+                
+                // Sincronizar eventos de paste
+                passwordInput.addEventListener('paste', function() {
+                    setTimeout(() => {
+                        passwordVisibleInput.value = this.value;
+                    }, 0);
+                });
+                
+                passwordVisibleInput.addEventListener('paste', function() {
+                    setTimeout(() => {
+                        passwordInput.value = this.value;
+                    }, 0);
+                });
+                
+            })();
+        </script>
     </body>
 </html>

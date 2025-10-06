@@ -5,7 +5,10 @@ Responsive Login Page built with HTML, CSS, and Media Queries following the next
 
 # Result
 Web:
+
 <img width="1919" height="902" alt="image" src="https://github.com/user-attachments/assets/1ecdd524-151e-4179-86c9-3f539d2197cf" />
 
 Mobile: 
-<img width="834" height="903" alt="image" src="https://github.com/user-attachments/assets/91bbbe15-d4a3-46cc-999e-48e672eb0388" />
+
+<img width="800" height="852" alt="image" src="https://github.com/user-attachments/assets/9bd63c7e-6fe1-4ecc-87e7-117c6fb988a2" />
+

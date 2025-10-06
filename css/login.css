@@ -25,6 +25,34 @@ body {
     padding: 20px;
 }
 
+/* ===== MEDIA QUERY ======*/
+@media (max-width: 768px) {
+    .login-left-panel {
+        display: none !important; /* !important para sobrescribir el display: flex */
+    }
+    
+    .login-container {
+        justify-content: center;
+    }
+    
+    .login-right-panel {
+        flex: none;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 40px 30px;
+    }
+
+    .welcome-title {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+    
+    .welcome-subtitle {
+        text-align: center;
+    }
+}
+
 /* ===== PANEL IZQUIERDO - BRANDING ===== */
 .login-left-panel {
     background-color: #005be0;

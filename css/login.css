@@ -44,12 +44,19 @@ body {
     }
 
     .welcome-title {
-        text-align: center;
         font-size: 1.8rem;
     }
     
     .welcome-subtitle {
-        text-align: center;
+        text-align: left;
+    }
+
+    .login-button{
+        width:100% !important;
+    }
+
+    .mobile-only-text{
+        display: block !important;
     }
 }
 
@@ -107,6 +114,19 @@ body {
     margin: 5px 0 30px 0;
     font-weight: 500;
     letter-spacing: 0.3px;
+}
+
+/* ===== TEXTO SOLO PARA MÓVILES ===== */
+.mobile-only-text{
+    display: none; /* Oculto por defecto */
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin: 35px 0;
+    padding: 10px;
+   
+    
 }
 
 /* ===== ESTRUCTURA DE FORMULARIO ===== */
@@ -260,8 +280,18 @@ body {
     color: #0056b3;
 }
 
+.sign-up-link {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.sign-up-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
 .login-button {
-    width: 100%;
+    width: 200px;
     padding: 12px;
     border: none;
     border-radius: 8px;

@@ -1,21 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
     <head>
         <meta charset="utf-8"/>
-        <meta name="Login Page" content="Responsive Login Page built with HTML, CSS, and Media Queries"/>
+        <meta name="description" content="Responsive Login Page built with HTML, CSS, and Media Queries"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="css/login.css"/>
-        <title>Login Page</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <title>AdminExpress - Login</title>
     </head>
     <body>
-        <div>
-        <!-- Left half -->
-            <div>
-                <h1>AdminExpress</h1>
-            </div>
-        <!-- Right half -->
-            <div>
-                login
-            </div>
-        </div>
+        <main class="login-container">
+            <!-- Panel izquierdo con branding -->
+            <section class="login-left-panel">
+                <h1 class="brand-title">AdminExpress</h1>
+            </section>
+
+            <!-- Panel derecho con formulario -->
+            <section class="login-right-panel">
+                <form class="login-form" role="form" aria-label="Login form">
+                    <!-- Título de bienvenida -->
+                    <h2 class="welcome-title">
+                        Let's <span class="highlight">Sign In</span>
+                        <img class="welcome-emoji" 
+                             src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f447.png" 
+                             alt="pointing down emoji">
+                    </h2>
+                    
+                    <p class="welcome-subtitle">
+                        Hey. Enter your details to get sign in<br>
+                        to your account.
+                    </p>
+
+                    <!-- Campo de email -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <div class="input-wrapper email-field">
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   class="form-input" 
+                                   placeholder="Enter Email" 
+                                   required 
+                                   autocomplete="email"/>
+                        </div>
+                    </div>
+
+                    <!-- Campo de contraseña -->
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-wrapper password-field">
+                            <input type="password" 
+                                   id="password" 
+                                   name="password" 
+                                   class="form-input" 
+                                   placeholder="Enter Password" 
+                                   required 
+                                   autocomplete="current-password"/>
+                        </div>
+                    </div>
+
+                    <!-- Enlace de contraseña olvidada -->
+                    <a href="#" class="forgot-password-link">Forgot password?</a>
+
+                    <!-- Botón de envío -->
+                    <button type="submit" class="login-button">
+                        Sign In
+                    </button>
+                </form>
+            </section>
+        </main>
     </body>
 </html>

@@ -143,8 +143,56 @@ html, body {
     background-position: center;
 }
 
+/* ===== ICONO DE OJO PARA MOSTRAR/OCULTAR CONTRASEÑA (CSS-ONLY) ===== */
+
+/* Ocultar el checkbox */
+.password-checkbox {
+    display: none;
+}
+
+/* Input de contraseña visible (inicialmente oculto) */
+.password-visible-input {
+    display: none !important;
+}
+
+/* Label que actúa como botón del ojo */
+.password-toggle-label {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.3s ease;
+    /* Ojo cerrado por defecto */
+    background-image: url('https://www.svgrepo.com/show/380007/eye-password-hide.svg');
+}
+
+.password-toggle-label:hover {
+    opacity: 0.7;
+}
+
+/* Cuando el checkbox está checked (ojo abierto) */
+.password-checkbox:checked + .password-toggle-label {
+    background-image: url('https://cdn1.iconfinder.com/data/icons/general-icons2/128/eye-open2-512.png');
+}
+
+/* Mostrar/ocultar inputs basado en el estado del checkbox */
+.password-checkbox:checked ~ #password {
+    display: none !important;
+}
+
+.password-checkbox:checked ~ .password-visible-input {
+    display: block !important;
+}
+
 /* ===== ENLACES Y BOTONES ===== */
 .forgot-password-link {
+    display: block;
     text-align: right;
     margin-bottom: 25px;
     color: #007bff;
